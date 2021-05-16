@@ -58,13 +58,7 @@
 \usepackage{wrapfig}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
-\begin{titlepage}
-%\includegraphics{logo.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
-    \begin{center}
-	{\includegraphics[width = \textwidth]{"PG_Dissertation_template_page1.pdf"}} 
-            
-    \end{center}
-\end{titlepage}
+
 \tableofcontents
 \newpage
 \section*{Executive summary}
@@ -308,13 +302,6 @@ ARIMA from AIC with price & 61.05 & 179.07 & \textcolor{red}{96.83 (step = 1)}& 
 \end{table}
 
 \newpage
-\subsection{Application on a realistic data set}
-
-In the previous section we applied multiple methods on an artificial data set and discussed their performance. In this section we will discuss the application of the most promising methods on a realistic data set. A realistic data set contains the sales of multiple products sold in different places. For forecasting the sales we construct a model for each individual object sold. The effects of the marketing plans for each object do not contribute, meaning that the patterns in the sales mainly reflect the needs of the market rather than the strategy of the company. We will focus on the STL decomposition with non-linear regression for the trend and seasonal naive for the seasonal component, the Holt-Winters and ARIMA methods. A realistic data set can have more variables that can be used as a predictor. However here we will discuss only the effect of the price similarly to the artificial data set. Compared to the artificial data set some preprocessing is required. We will start by summarizing the preprocessing and then discuss the forecasts. For applying the different methods we follow the same process as we did with the artificial data set.
-
-In the pre-processing stage objects with less than 3 years of sales are removed because we will need at least two years of data for training and one for testing. This also allows for enough data points available for the training window to expand in the cross-validation. We also removed objects that have stopped their sales at the time when the last observation is made, because the forecast of such cases will be zero. To remove the outliers, we substitute the observations whose value is outside the upper bounds of a Gaussian distribution with $\mu \pm 3\times \sigma$, where $\mu$ is the mean and $\sigma$ is the standard deviation. We exclude extended periods of time with zero sales assuming that for these weeks the object is either not sold or we are missing sales, in order to avoid artifacts that lead to unreliable forecasts. For the regression methods we will also need the price variable. Similarly to the pre-processing of the target, we remove outliers in the price. We further smooth this predictor by applying a 2-months moving average.
-
-For the trend forecasts with non-linear regression, in order to ensure positive trend forecasts we take the natural logarithm of the trend. We also standardize the trend variable. After specifying the model hyperparameters (polynomials degree, smoothing parameters), we train the final model. When training the final model in order to impose continuity, we add to the training set the last observation in time and exclude it from the test set. This effectively lowers the prediction error since it prevents the trend from deviating at the beginning of the forecast. For forecasting we keep the price constant. At a last step we take the seasonal component of last year of observations and add it to the trend forecast.
 
 \subsection{A note on the computational performance}
 In the artificial data set we could already sense that the cross-validation process for selecting the order of a more complex method like the ARIMA is computationally expensive and it took approximately 20 minutes to run. For that calculation we even reduced the size of the cross-validation set, by using a step of 10 weeks for the expanding window of the training set, instead of 1 week. So it can be expected that applying this method to obtain several forecasts or trying to make it more precise will further increase the computational cost.
@@ -383,14 +370,6 @@ Wood, S.N. (2003)
 J.R.Statist.Soc.B 65(1):95-114
 
 \end{thebibliography}
-
-\begin{titlepage}
-%\includegraphics{logo.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
-    \begin{center}
-	{\includegraphics[width = \textwidth]{"PG_Dissertation_template_last_page.pdf"}} 
-            
-    \end{center}
-\end{titlepage}
 
 \end{document}
 

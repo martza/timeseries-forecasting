@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Problem description}{4}
+\contentsline {section}{\numberline {3}Methodology and results}{5}
+\contentsline {subsection}{\numberline {3.1}The artificial data set}{6}
+\contentsline {subsection}{\numberline {3.2}Seasonal naive and drift models}{7}
+\contentsline {subsection}{\numberline {3.3}A seasonal toy-model for yearly sales forecasting}{8}
+\contentsline {subsection}{\numberline {3.4}Forecasts using the seasonal naive method}{8}
+\contentsline {subsection}{\numberline {3.5}Forecasts beyond the seasonal naive method}{11}
+\contentsline {subsection}{\numberline {3.6}A note on the computational performance}{15}
+\contentsline {section}{\numberline {4}Conclusions and recommendations}{16}
